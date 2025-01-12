@@ -1,3 +1,6 @@
+#include "tabela.h"
+#include <string.h>
+
 // Tabela de codificação para os dígitos 0-9
 
 const char *leftCode[10] = {
@@ -25,15 +28,35 @@ const char *rightCode[10] = {
     "1001000", // 8
     "1110100"  // 9
 };
-const char *inicio[3] = {
-    "1", "0", "1"
+const char *inicio[1] = {
+    "101"};
+
+const char *final[1] = {
+    "101"
+
 };
 
-const char *final[3] = {
-    "1", "0", "1"
+const char *centro[1] = {
+    "01010"};
 
-};
+int calcularDigitoVerificador(char *identificadores)
+{
+    int soma = 0;
+    int tamanho = strlen(identificadores);
+    for (int i = 0; i < tamanho - 1; i++) // pega até o sétimo digito
+    {
 
-const char *centro[5] = {
-    "0", "1", "0", "1", "0"
-};
+        int digito = identificadores[i] - '0'; // Converte o caractere para número
+
+        if (i % 2 == 0)
+        { // Vai pegar os números na posição impar
+            soma += digito * 3;
+        }
+        else
+        { // Posição pares
+            soma += digito;
+        }
+    }
+    int digitoVerificador = (10 - (soma % 10)) % 10; // Garante múltiplo de 10
+    return digitoVerificador;
+}
