@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-#include "tabela.h"
-#include "codigo.h"
+#include "../include/tabela.h"
+#include "../include/codigo.h"
 
 int main()
 {
@@ -36,5 +36,6 @@ int main()
     if (digitoVerificadorCalculado != digitoVerificadorDigitado)
     {
         printf("Erro! O dígito verificador é inválido.\n");
+        return 1;
     }
 }

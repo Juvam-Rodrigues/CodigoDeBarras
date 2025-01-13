@@ -1,5 +1,5 @@
-#include "tabela.h"
-#include "codigo.h"
+#include "../include/tabela.h"
+#include "../include/codigo.h"
 #include <string.h>
 
 // Tabela de codificação para os dígitos 0-9
