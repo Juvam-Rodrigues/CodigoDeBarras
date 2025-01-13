@@ -1,6 +1,6 @@
 #ifndef TABELA_H
 #define TABELA_H
-
-int calcularDigitoVerificador(char *identificadores);
+#include "codigo.h"
+int calcularDigitoVerificador(Codigo *codigo);
 
 #endif

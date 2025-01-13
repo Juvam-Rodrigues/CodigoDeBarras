@@ -2,14 +2,19 @@
 #include <string.h>
 #include <ctype.h>
 #include "tabela.h"
+#include "codigo.h"
 
 int main()
 {
-    char idenficadores[9] = {0}; // Inclui o caractere nulo no fim
-    int digitoVerificadorCalculado, digitoVerificadorDigitado;
-    fgets(idenficadores, 9, stdin);
+    Codigo codigoBarra;
+    codigoBarra.altura = 50; // Altura padrão
+    codigoBarra.largura = 2; // Largura padrão
 
-    if (strlen(idenficadores) != 8)
+    int digitoVerificadorCalculado, digitoVerificadorDigitado;
+
+    fgets(codigoBarra.identificador, 9, stdin); // Entrada
+
+    if (strlen(codigoBarra.identificador) != 8 || codigoBarra.identificador[7] == '\n')
     {
         printf("Erro! Não possui 8 dígitos.\n");
         return 1; // para
@@ -18,17 +23,18 @@ int main()
     // Verifica se todos os caracteres são numéricos
     for (int i = 0; i < 8; i++)
     {
-        if (!isdigit(idenficadores[i]))
+        if (!isdigit(codigoBarra.identificador[i]))
         {
             printf("Erro! O identificador contém caracteres não numéricos.\n");
             return 1; // para
         }
     }
 
-    digitoVerificadorCalculado = calcularDigitoVerificador(idenficadores);
-    digitoVerificadorDigitado = idenficadores[7] - '0'; // Converte para número
-    
-    printf("%d\n", digitoVerificadorCalculado);
-    printf("%d\n", digitoVerificadorDigitado);
+    digitoVerificadorCalculado = calcularDigitoVerificador(&codigoBarra);
+    digitoVerificadorDigitado = codigoBarra.identificador[7] - '0'; // Converte para número
 
+    if (digitoVerificadorCalculado != digitoVerificadorDigitado)
+    {
+        printf("Erro! O dígito verificador é inválido.\n");
+    }
 }

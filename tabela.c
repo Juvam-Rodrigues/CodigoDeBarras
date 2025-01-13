@@ -1,4 +1,5 @@
 #include "tabela.h"
+#include "codigo.h"
 #include <string.h>
 
 // Tabela de codificação para os dígitos 0-9
@@ -39,14 +40,14 @@ const char *final[1] = {
 const char *centro[1] = {
     "01010"};
 
-int calcularDigitoVerificador(char *identificadores)
+int calcularDigitoVerificador(Codigo *codigo)
 {
     int soma = 0;
-    int tamanho = strlen(identificadores);
+    int tamanho = strlen(codigo->identificador);
     for (int i = 0; i < tamanho - 1; i++) // pega até o sétimo digito
     {
 
-        int digito = identificadores[i] - '0'; // Converte o caractere para número
+        int digito = codigo->identificador[i] - '0'; // Converte o caractere para número
 
         if (i % 2 == 0)
         { // Vai pegar os números na posição impar
