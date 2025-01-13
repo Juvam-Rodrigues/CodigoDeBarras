@@ -11,4 +11,6 @@ typedef struct codigo
 
 void gerarCodigoDeBarras(Codigo *codigoBarra);
 
+int calcularDigitoVerificador(Codigo *codigo);
+
 #endif
