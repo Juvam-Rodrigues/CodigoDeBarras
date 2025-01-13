@@ -38,4 +38,8 @@ int main()
         printf("Erro! O dígito verificador é inválido.\n");
         return 1;
     }
+    gerarCodigoDeBarras(&codigoBarra);//Mandando o objeto para ser gerado o binário
+    for(int i = 0; i < strlen(codigoBarra.codigo); i++){
+        printf("%c", codigoBarra.codigo[i]);
+    }
 }
