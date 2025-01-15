@@ -3,6 +3,37 @@
 #include <ctype.h>
 #include "../include/tabela.h"
 #include "../include/codigo.h"
+#include "../include/arquivo.h"
+
+int verificarSobrescrever(Arquivo arq)
+{
+    FILE *arquivo = fopen(strcat(arq.nome, ".txt"), "r");
+
+    if (arquivo != NULL)
+    {
+        // O arquivo existe
+        fclose(arquivo);
+        char resposta;
+
+        printf("O arquivo \"%s\" já existe. Deseja sobrescrevê-lo? (s/n): ", arq.nome);
+        scanf(" %c", &resposta);
+
+        if (resposta == 's' || resposta == 'S')
+        {
+            return 1; // Permitir sobrescrever
+        }
+        else
+        {
+            printf("Erro: arquivo resultante já existe.\n");
+            return 0; // Não sobrescrever
+        }
+    }
+    else
+    {
+        // O arquivo não existe
+        return 1; // Permitir criar o arquivo
+    }
+}
 
 int main()
 {
@@ -12,6 +43,7 @@ int main()
 
     int digitoVerificadorCalculado, digitoVerificadorDigitado;
 
+    printf("Digite o código:\n");
     fgets(codigoBarra.identificador, 9, stdin); // Entrada
 
     if (strlen(codigoBarra.identificador) != 8 || codigoBarra.identificador[7] == '\n')
@@ -38,8 +70,27 @@ int main()
         printf("Erro! O dígito verificador é inválido.\n");
         return 1;
     }
-    gerarCodigoDeBarras(&codigoBarra);//Mandando o objeto para ser gerado o binário
-    for(int i = 0; i < strlen(codigoBarra.codigo); i++){
-        printf("%c", codigoBarra.codigo[i]);
+
+    // Deu tudo certo nas verificações, logo, gera o binário
+    gerarCodigoDeBarras(&codigoBarra); // Mandando o objeto para ser gerado o binário
+
+    Arquivo arquivo;
+    printf("Digite o nome do arquivo:\n");
+    scanf("%s", arquivo.nome);
+
+    int respostaSobrescrita = verificarSobrescrever(arquivo);
+
+    if (respostaSobrescrita == 1)
+    {
+        FILE *arquivoGerado = fopen(strcat(arquivo.nome, ".txt"), "w"); // Abre um novo arquivo para escrita
+        for (int i = 0; i < strlen(codigoBarra.codigo); i++)
+        {
+            fprintf(arquivoGerado, "%c", codigoBarra.codigo[i]);
+        }
+        fclose(arquivoGerado);
+    }
+    else
+    {
+        return 1;
     }
 }
