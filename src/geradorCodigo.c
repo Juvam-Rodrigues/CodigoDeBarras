@@ -38,8 +38,9 @@ int verificarSobrescrever(Arquivo arq)
 int main()
 {
     Codigo codigoBarra;
-    codigoBarra.altura = 50; // Altura padrão
-    codigoBarra.largura = 2; // Largura padrão
+    codigoBarra.altura = 50;            // Altura padrão
+    codigoBarra.espacamentoLateral = 2; // Largura padrão
+    codigoBarra.area = 1;               // Área padrão
 
     int digitoVerificadorCalculado, digitoVerificadorDigitado;
 
@@ -74,7 +75,10 @@ int main()
     // Deu tudo certo nas verificações, logo, gera o binário
     gerarCodigoDeBarras(&codigoBarra); // Mandando o objeto para ser gerado o binário
 
+    // Geração de arquivo
     Arquivo arquivo;
+    strcpy(arquivo.nome, "codigodebarra"); //Nome padrão
+
     printf("Digite o nome do arquivo:\n");
     scanf("%s", arquivo.nome);
 
@@ -82,7 +86,7 @@ int main()
 
     if (respostaSobrescrita == 1)
     {
-        FILE *arquivoGerado = fopen(strcat(arquivo.nome, ".txt"), "w"); // Abre um novo arquivo para escrita
+        FILE *arquivoGerado = fopen(strcat(arquivo.nome, ".pbm"), "w"); // Abre um novo arquivo para escrita
         for (int i = 0; i < strlen(codigoBarra.codigo); i++)
         {
             fprintf(arquivoGerado, "%c", codigoBarra.codigo[i]);
