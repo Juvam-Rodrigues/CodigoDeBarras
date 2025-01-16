@@ -14,7 +14,7 @@ int main(int argc, char **argv)
         switch (i)
         {
         case 1:
-            strcpy(leitor.nome, argv[1]);
+            strcpy(leitor.nome, argv[i]);
             break;
         default:
             break;
@@ -38,56 +38,71 @@ int main(int argc, char **argv)
     }
 
     int largura, altura;
-    int **matrizLeitor;
 
     fscanf(arquivo, "%d %d", &largura, &altura);
-    matrizLeitor = malloc(sizeof(int*) * altura);
-    for(int i = 0; i < altura; i++){
-      matrizLeitor[i] = malloc(sizeof(int)*largura);
-    }
 
+    char **matrizLeitor = malloc(sizeof(char *) * altura);
+    for(int i = 0; i < altura; i++){
+      matrizLeitor[i] = malloc(sizeof(char) * largura);
+    }
+    
     //Ler matriz da .PBM para a imagem
     for(int i = 0; i < altura; i++){
       for(int j = 0; j < largura; j++){
-        fscanf(arquivo, "%d", &matrizLeitor[i][j]);
+        do {
+          fscanf(arquivo, "%c", &matrizLeitor[i][j]);
+          } while (matrizLeitor[i][j] != '0' && matrizLeitor[i][j] != '1' && j < largura);
       }
     }
 
+    /*for(int i = 0; i < altura; i++){ // teste
+      for(int j = 0; j < largura; j++){
+        printf("%c", matrizLeitor[i][j]);
+      }
+      printf("\n");
+    }*/
+
     fclose(arquivo);
 
-    // Encontrar o marcador inicial
-    int linhaInicial, colunaInicial, contadorArea = 0;
+    
 
-    for(int i = altura/2; i < altura; i++){
+    // Encontrar o marcador inicial
+    int linhaInicial = -1, colunaInicial = -1, contadorArea = 0;
+
+    for(int i = 0; i < altura; i++){
       for(int j = 0; j < largura; j++){
-        if(matrizLeitor[i][j] == 1){
+        if(matrizLeitor[i][j] == '1'){
           linhaInicial = i;
           colunaInicial = j;
           break;
         }
+        if(linhaInicial != -1) break;
       }
+      if(linhaInicial != -1) break;
     }
-
+    //printf("\n%d %d\n", linhaInicial, colunaInicial);
     for(int i = colunaInicial; i< largura; i++){ // Encontrando área
-      if(matrizLeitor[linhaInicial][i] == 1){
+      if(matrizLeitor[linhaInicial][i] == '1'){
         contadorArea++;
       }
       else{
         break;
       }
     }
+    //printf("%d\n", contadorArea);
+    
     Codigo codidoLeitor;
     int contador = 0;
-    for(int j = colunaInicial; contador<67; j+= contadorArea){ // Encontrando área
-        codidoLeitor.codigo[contador] = matrizLeitor[linhaInicial][j] + '0';
+    for(int j = colunaInicial; contador<67; j= j + contadorArea){ // Encontrando área
+        codidoLeitor.codigo[contador] = matrizLeitor[linhaInicial][j];
         contador++;
     }
     
     //printf opicioanl teste
-    for(int j = 0; j < 67; j++){ // Encontrando área
+    /*for(int j = 0; j < 67; j++){ // Encontrando área
         printf("%c", codidoLeitor.codigo[j]);
-    }
+    }*/
 
 
-    printf("%s", leitor.nome);
+    //printf("\n%s", leitor.nome);
 }
