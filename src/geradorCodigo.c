@@ -49,34 +49,35 @@ int main(int argc, char *argv[])
 
     int digitoVerificadorCalculado, digitoVerificadorDigitado;
 
-    /*printf("Digite o código:\n");
-    fgets(codigoBarra.identificador, 9, stdin);*/ // Entrada
-
-    //entrada alternativa com argc e v
-    for(int i = 1; i < argc; i++){
+    // Entrada com argc e v
+    for (int i = 1; i < argc; i++)
+    {
         int n = atoi(argv[i]);
-        switch(i)
+        switch (i)
         {
         case 1:
             strcpy(codigoBarra.identificador, argv[i]);
             break;
         case 2:
-            if(n != 0){
+            if (n != 0)
+            {
                 codigoBarra.espacamentoLateral = n;
             }
             break;
         case 3:
-            if(n != 0){
+            if (n != 0)
+            {
                 codigoBarra.area = n;
             }
             break;
         case 4:
-            if(n != 0){
+            if (n != 0)
+            {
                 codigoBarra.altura = n;
             }
             break;
         case 5:
-                strcpy(arquivo.nome, argv[5]);
+            strcpy(arquivo.nome, argv[5]);
             break;
         default:
             break;
@@ -84,12 +85,13 @@ int main(int argc, char *argv[])
     }
 
     printf("%d %d %d %s", codigoBarra.espacamentoLateral,
-    codigoBarra.area,codigoBarra.altura,arquivo.nome);
+           codigoBarra.area, codigoBarra.altura, arquivo.nome);
 
+    // Verifica se possui os 8 dígitos
     if (strlen(codigoBarra.identificador) != 8 || codigoBarra.identificador[7] == '\n')
     {
         printf("Erro! Não possui 8 dígitos.\n");
-        return 1; // para
+        return 1; // Para
     }
 
     // Verifica se todos os caracteres são numéricos
@@ -102,9 +104,9 @@ int main(int argc, char *argv[])
         }
     }
 
+    // Verifica se o dígito final atende ao cálculo
     digitoVerificadorCalculado = calcularDigitoVerificador(&codigoBarra);
     digitoVerificadorDigitado = codigoBarra.identificador[7] - '0'; // Converte para número
-
     if (digitoVerificadorCalculado != digitoVerificadorDigitado)
     {
         printf("Erro! O dígito verificador é inválido.\n");
@@ -113,71 +115,78 @@ int main(int argc, char *argv[])
 
     // Deu tudo certo nas verificações, logo, gera o binário
     gerarCodigoDeBarras(&codigoBarra); // Mandando o objeto para ser gerado o binário
+
     // Criar matriz
-        int **codBarra;
+    int **codBarra;
 
-        int alturaTotal = codigoBarra.altura + 2*codigoBarra.espacamentoLateral; // tirei area
-        int larguraTotal = (67*codigoBarra.area) + 2*(codigoBarra.espacamentoLateral);
+    int alturaTotal = codigoBarra.altura + 2 * codigoBarra.espacamentoLateral;
+    int larguraTotal = (67 * codigoBarra.area) + 2 * (codigoBarra.espacamentoLateral);
 
-        codBarra = malloc(sizeof(int*) * alturaTotal); // cria matriz
-        for(int i = 0; i < alturaTotal; i++){
-            codBarra[i] = malloc(sizeof(int) * larguraTotal);
+    codBarra = malloc(sizeof(int *) * alturaTotal); // cria matriz
+    for (int i = 0; i < alturaTotal; i++)
+    {
+        codBarra[i] = malloc(sizeof(int) * larguraTotal);
+    }
+
+    for (int i = 0; i < alturaTotal; i++)
+    { // preenche tudo com 0
+        for (int j = 0; j < larguraTotal; j++)
+        {
+            codBarra[i][j] = 0;
         }
+    }
 
-        for(int i = 0; i < alturaTotal; i++){ // preenche tudo com 0
-            for(int j = 0; j < larguraTotal; j++){
-                codBarra[i][j] = 0;
-            }
-        }
-    
     // Preencher matriz com código
-        int espacamentoProlongado = codigoBarra.espacamentoLateral; 
-        int larguraInterna = larguraTotal - espacamentoProlongado;
+    int espacamentoProlongado = codigoBarra.espacamentoLateral;
+    int larguraInterna = larguraTotal - espacamentoProlongado;
 
-        int alturaInterna = alturaTotal - espacamentoProlongado;
+    int alturaInterna = alturaTotal - espacamentoProlongado;
 
-        int contador = 0;
-        
-        for(int i = espacamentoProlongado; i < alturaInterna; i++){
+    int contador = 0;
 
-            for(int j = espacamentoProlongado;
-             j < larguraInterna; j += codigoBarra.area){
-                for(int k = 0; k < codigoBarra.area; k++){
-                    codBarra[i][j+k] = codigoBarra.codigo[contador] - '0';
-                }
-                contador++;
+    for (int i = espacamentoProlongado; i < alturaInterna; i++)
+    {
+
+        for (int j = espacamentoProlongado;
+             j < larguraInterna; j += codigoBarra.area)
+        {
+            for (int k = 0; k < codigoBarra.area; k++)
+            {
+                codBarra[i][j + k] = codigoBarra.codigo[contador] - '0';
             }
-            contador = 0;
+            contador++;
         }
+        contador = 0;
+    }
 
+    /*     //IMPRESSÃO DA MATRIZ PARA CASO NECESSÁRIO
+    printf("\n");
+
+    for (int i = 0; i < alturaTotal; i++)
+    {
+        for (int j = 0; j < larguraTotal; j++)
+        {
+            printf("%d", codBarra[i][j]);
+        }
         printf("\n");
-
-        for(int i = 0; i < alturaTotal; i++){
-            for(int j = 0; j < larguraTotal; j++){
-                printf("%d",codBarra[i][j]);
-            }  
-            printf("\n");  
-        }
-
-    /*Arquivo arquivo;
-    strcpy(arquivo.nome, "codigodebarra");*/ //Nome padrão
-
-    /* printf("Digite o nome do arquivo:\n");
-    scanf("%s", arquivo.nome); */
-
+    }
+    */
+    
+    // Verifica se o arquivo já existe
     int respostaSobrescrita = verificarSobrescrever(arquivo);
 
+    // Caso deseja sobrescrever ou não exista
     if (respostaSobrescrita == 1)
     {
         FILE *arquivoGerado = fopen(strcat(arquivo.nome, ".pbm"), "w"); // Abre um novo arquivo para escrita
-        fprintf(arquivoGerado, "P1\n%d %d\n",larguraTotal,alturaTotal); 
+        fprintf(arquivoGerado, "P1\n%d %d\n", larguraTotal, alturaTotal);
         for (int i = 0; i < alturaTotal; i++)
         {
-            for(int j = 0; j< larguraTotal;j++){
-               fprintf(arquivoGerado, "%d", codBarra[i][j]); 
+            for (int j = 0; j < larguraTotal; j++)
+            {
+                fprintf(arquivoGerado, "%d", codBarra[i][j]);
             }
             fprintf(arquivoGerado, "\n");
-            //fprintf(arquivoGerado, "%c", codBarra[i]);
         }
         fclose(arquivoGerado);
     }
