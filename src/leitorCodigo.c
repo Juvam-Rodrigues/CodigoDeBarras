@@ -9,7 +9,7 @@
 int main(int argc, char **argv)
 {
     Arquivo leitor;
-    for (int i = 1; i < argc; i++)
+    for (int i = 0; i < argc; i++)
     {
         switch (i)
         {
@@ -38,16 +38,56 @@ int main(int argc, char **argv)
     }
 
     int largura, altura;
-    char **imagem;
+    int **matrizLeitor;
 
-    fscanf(arquivo, "%d %d", largura, altura);
-    *imagem = (int *)malloc((largura) * (altura) * sizeof(int));
-    if (!*imagem)
-    {
-        perror("Erro ao alocar memória para a imagem");
-        fclose(arquivo);
-        exit(1);
+    fscanf(arquivo, "%d %d", &largura, &altura);
+    matrizLeitor = malloc(sizeof(int*) * altura);
+    for(int i = 0; i < altura; i++){
+      matrizLeitor[i] = malloc(sizeof(int)*largura);
     }
+
+    //Ler matriz da .PBM para a imagem
+    for(int i = 0; i < altura; i++){
+      for(int j = 0; j < largura; j++){
+        fscanf(arquivo, "%d", &matrizLeitor[i][j]);
+      }
+    }
+
+    fclose(arquivo);
+
+    // Encontrar o marcador inicial
+    int linhaInicial, colunaInicial, contadorArea = 0;
+
+    for(int i = altura/2; i < altura; i++){
+      for(int j = 0; j < largura; j++){
+        if(matrizLeitor[i][j] == 1){
+          linhaInicial = i;
+          colunaInicial = j;
+          break;
+        }
+      }
+    }
+
+    for(int i = colunaInicial; i< largura; i++){ // Encontrando área
+      if(matrizLeitor[linhaInicial][i] == 1){
+        contadorArea++;
+      }
+      else{
+        break;
+      }
+    }
+    Codigo codidoLeitor;
+    int contador = 0;
+    for(int j = colunaInicial; contador<67; j+= contadorArea){ // Encontrando área
+        codidoLeitor.codigo[contador] = matrizLeitor[linhaInicial][j] + '0';
+        contador++;
+    }
+    
+    //printf opicioanl teste
+    for(int j = 0; j < 67; j++){ // Encontrando área
+        printf("%c", codidoLeitor.codigo[j]);
+    }
+
 
     printf("%s", leitor.nome);
 }
