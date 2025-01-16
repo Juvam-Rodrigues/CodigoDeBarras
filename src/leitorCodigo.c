@@ -64,8 +64,6 @@ int main(int argc, char **argv)
 
     fclose(arquivo);
 
-    
-
     // Encontrar o marcador inicial
     int linhaInicial = -1, colunaInicial = -1, contadorArea = 0;
 
@@ -98,6 +96,8 @@ int main(int argc, char **argv)
         contador++;
     }
     
+    decodificarCodigoBinario(&codidoLeitor);
+
     //printf opicioanl teste
     /*for(int j = 0; j < 67; j++){ // Encontrando área
         printf("%c", codidoLeitor.codigo[j]);
