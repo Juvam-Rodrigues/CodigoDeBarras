@@ -52,10 +52,51 @@ void gerarCodigoDeBarras(Codigo *cb)
     strcpy(cb->codigo, binario);
 }
 
-void decodificarCodigoBinario(Codigo *cb)
+int decodificarCodigoBinario(Codigo *cb)
 {
     char *binario = cb->codigo;
     char identificador[9] = {0};
+
+    char primeirosDigitos[4] = {0}; // Espaço para 3 caracteres + '\0'
+    char digitosCentro[6] = {0};    // Espaço para 5 caracteres + '\0'
+    char digitosFinais[4] = {0};    // Espaço para 3 caracteres + '\0'
+
+    // Preenche os primeiros 3 dígitos
+    for (int i = 0; i < 3; i++)
+    {
+        primeirosDigitos[i] = cb->codigo[i];
+    }
+    primeirosDigitos[3] = '\0'; 
+
+    if (strcmp(primeirosDigitos, inicio[0]) != 0)
+    {
+        return 1;
+    }
+
+    // Preenche os últimos 3 dígitos
+    for (int j = 64; j < 67; j++)
+    {
+        digitosFinais[j - 64] = cb->codigo[j]; 
+    }
+    digitosFinais[3] = '\0'; // Adiciona o terminador de string
+
+    // Verifica se os últimos dígitos correspondem ao código final
+    if (strcmp(digitosFinais, final[0]) != 0)
+    {
+        return 1;
+    }
+
+    for (int k = 31; k < 36; k++)
+    {
+        digitosCentro[k - 31] = cb->codigo[k]; 
+    }
+    digitosCentro[5] = '\0'; // Adiciona o terminador de string
+
+    // Verifica se os dígitos centrais correspondem ao código central
+    if (strcmp(digitosCentro, centro[0]) != 0)
+    {
+        return 1;
+    }
 
     // Avança o ponteiro após o padrão de início
     binario += strlen(inicio[0]);
@@ -90,9 +131,10 @@ void decodificarCodigoBinario(Codigo *cb)
     }
 
     strcpy(cb->identificador, identificador);
-    
-    //Impressão do código identificador
-    for(int i = 0; i < strlen(cb->identificador); i++){
+
+    // Impressão do código identificador
+    for (int i = 0; i < strlen(cb->identificador); i++)
+    {
         printf("%c", cb->identificador[i]);
     }
 }

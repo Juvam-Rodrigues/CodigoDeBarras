@@ -11,7 +11,7 @@ typedef struct codigo
 } Codigo;
 
 void gerarCodigoDeBarras(Codigo *codigoBarra);
-void decodificarCodigoBinario(Codigo *codigoBarra);
+int decodificarCodigoBinario(Codigo *codigoBarra);
 
 int calcularDigitoVerificador(Codigo *codigo);
 

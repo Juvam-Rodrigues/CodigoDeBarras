@@ -96,13 +96,17 @@ int main(int argc, char **argv)
         contador++;
     }
     
-    decodificarCodigoBinario(&codidoLeitor);
-
+    int resultadoDecodificacao = 0;
+    
+    resultadoDecodificacao = decodificarCodigoBinario(&codidoLeitor);
+    if(resultadoDecodificacao == 1){
+        printf("Arquivo corrompido.");
+        return 1;
+    }
     //printf opicioanl teste
     /*for(int j = 0; j < 67; j++){ // Encontrando área
         printf("%c", codidoLeitor.codigo[j]);
     }*/
-
 
     //printf("\n%s", leitor.nome);
 }
