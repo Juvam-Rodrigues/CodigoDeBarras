@@ -174,7 +174,6 @@ int main(int argc, char *argv[])
         }
 
         // Liberação adequada de memória
-
         for (int i = 0; i < alturaTotal; i++)
         {
             free(codBarra[i]);
