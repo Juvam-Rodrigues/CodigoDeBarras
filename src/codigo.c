@@ -57,9 +57,9 @@ int decodificarCodigoBinario(Codigo *cb)
     char *binario = cb->codigo;
     char identificador[9] = {0};
 
-    char primeirosDigitos[4] = {0}; // Espaço para 3 caracteres + '\0'
-    char digitosCentro[6] = {0};    // Espaço para 5 caracteres + '\0'
-    char digitosFinais[4] = {0};    // Espaço para 3 caracteres + '\0'
+    char primeirosDigitos[4] = {0}; 
+    char digitosCentro[6] = {0};    
+    char digitosFinais[4] = {0};
 
     // Preenche os primeiros 3 dígitos
     for (int i = 0; i < 3; i++)

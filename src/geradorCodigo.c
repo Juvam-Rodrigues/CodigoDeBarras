@@ -84,9 +84,6 @@ int main(int argc, char *argv[])
         }
     }
 
-    printf("%d %d %d %s", codigoBarra.espacamentoLateral,
-           codigoBarra.area, codigoBarra.altura, arquivo.nome);
-
     // Verifica se possui os 8 dígitos
     if (strlen(codigoBarra.identificador) != 8 || codigoBarra.identificador[7] == '\n')
     {

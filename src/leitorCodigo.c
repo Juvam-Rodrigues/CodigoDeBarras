@@ -55,13 +55,6 @@ int main(int argc, char **argv)
       }
     }
 
-    /*for(int i = 0; i < altura; i++){ // teste
-      for(int j = 0; j < largura; j++){
-        printf("%c", matrizLeitor[i][j]);
-      }
-      printf("\n");
-    }*/
-
     fclose(arquivo);
 
     // Encontrar o marcador inicial
@@ -78,7 +71,7 @@ int main(int argc, char **argv)
       }
       if(linhaInicial != -1) break;
     }
-    //printf("\n%d %d\n", linhaInicial, colunaInicial);
+
     for(int i = colunaInicial; i< largura; i++){ // Encontrando área
       if(matrizLeitor[linhaInicial][i] == '1'){
         contadorArea++;
@@ -87,7 +80,6 @@ int main(int argc, char **argv)
         break;
       }
     }
-    //printf("%d\n", contadorArea);
     
     Codigo codidoLeitor;
     int contador = 0;
@@ -103,10 +95,7 @@ int main(int argc, char **argv)
         printf("Arquivo corrompido.");
         return 1;
     }
-    //printf opicioanl teste
-    /*for(int j = 0; j < 67; j++){ // Encontrando área
-        printf("%c", codidoLeitor.codigo[j]);
-    }*/
-
-    //printf("\n%s", leitor.nome);
+    //Após terminado, liberando espaço na memória
+    free(matrizLeitor);
+    
 }
