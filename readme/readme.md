@@ -52,7 +52,7 @@ Para utilizar este projeto, temos dois arquivos com o método main: <strong>gera
             </ul>
         </li>
     </ul>
-<strong>Observação: caso for utilizar, coloque 0 no lugar dos argumentos opcionais que não queiram alterar os valores padrões do geradorCodigo.C.</strong>
+<strong>Observação: caso for utilizar os argumentos opcionais, coloque 0 no lugar destes, pois esses valores viram com valor padrão.
 
 <h2>Colaboradores: 🤝</h2>
 Este projeto possui por colaboradores (principais desenvolvedores):
