@@ -35,6 +35,25 @@ Este projeto consiste em um trabalho desenvolvido para a disciplina Introdução
         </li>
     </ul>
 
+<h2>Como usar? 👤</h2>
+Para utilizar este projeto, temos dois arquivos com o método main: <strong>geradorCodigo.c</strong> e <strong>leitorCodigo.c</strong>.
+<ul>
+        <li>geradorCodigo.c
+            <ul>
+                <li>gcc codigo.c geradorCodigo.c tabela.c -o "NomeDoExecutavel"</li>
+                Tendo compilado, fazemos (<strong>Opcional: <'Espaçamento Lateral'> <'Área por pixel'> <'Altura'> <'Nome do Arquivo Gerado>*</strong>):
+                <li><'NomeDoExecutavel'> <'Identificador do código'> <'Espaçamento Lateral'> <'Área por pixel'> <'Altura'> <'Nome do Arquivo Gerado>'</li>
+            </ul>
+        </li>
+        <li>leitorCodigo.c
+            <ul>
+                <li>gcc codigo.c leitorCodigo.c tabela.c -o "NomeDoExecutavel"</li>
+                <li><'NomeDoExecutavel'> <'Nome do Arquivo Gerado'></li>
+            </ul>
+        </li>
+    </ul>
+<strong>Observação: caso for utilizar, coloque 0 no lugar dos argumentos opcionais que não queiram alterar os valores padrões do geradorCodigo.C.</strong>
+
 <h2>Colaboradores: 🤝</h2>
 Este projeto possui por colaboradores (principais desenvolvedores):
 <ul>
