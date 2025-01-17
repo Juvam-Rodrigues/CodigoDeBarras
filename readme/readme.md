@@ -8,15 +8,11 @@ Este projeto consiste na implementação de um gerador e leitor de código de ba
 <h1>Estrutura de pastas: 📂</h1>
 <ul>
     <li>include</li>
-        <ul>
             <li>arquivo.h<li>
             <li>codigo.h<li>
             <li>tabela.h<li>
-        </ul>
     <li>src</li>
-        <ul>
             <li>arquivo.h<li>
             <li>codigo.h<li>
             <li>tabela.h<li>
-        </ul>
 </ul>
