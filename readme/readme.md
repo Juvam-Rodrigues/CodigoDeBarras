@@ -6,13 +6,19 @@ Este projeto consiste na implementação de um gerador e leitor de código de ba
 - Decodificar um código de barras para verificar suas informações.
 
 <h1>Estrutura de pastas: 📂</h1>
-<ul>
-    <li>include</li>
-            <li>arquivo.h<li>
-            <li>codigo.h<li>
-            <li>tabela.h<li>
-    <li>src</li>
-            <li>arquivo.h<li>
-            <li>codigo.h<li>
-            <li>tabela.h<li>
-</ul>
+   <ul>
+        <li>include
+            <ul>
+                <li>Subtópico 1.1</li>
+                <li>Subtópico 1.2</li>
+                <li>Subtópico 1.3</li>
+            </ul>
+        </li>
+        <li>Tópico Principal 2
+            <ul>
+                <li>Subtópico 2.1</li>
+                <li>Subtópico 2.2</li>
+            </ul>
+        </li>
+        <li>Tópico Principal 3</li>
+    </ul>
