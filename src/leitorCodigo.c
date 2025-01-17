@@ -95,7 +95,11 @@ int main(int argc, char **argv)
         printf("Arquivo corrompido.");
         return 1;
     }
+
     //Após terminado, liberando espaço na memória
+    for(int i = 0; i < altura; i++){
+      free(matrizLeitor[i]);
+    }
     free(matrizLeitor);
     
 }

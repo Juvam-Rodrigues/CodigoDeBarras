@@ -119,14 +119,14 @@ int main(int argc, char *argv[])
     int alturaTotal = codigoBarra.altura + 2 * codigoBarra.espacamentoLateral;
     int larguraTotal = (67 * codigoBarra.area) + 2 * (codigoBarra.espacamentoLateral);
 
-    codBarra = malloc(sizeof(int *) * alturaTotal); // cria matriz
+    codBarra = malloc(sizeof(int *) * alturaTotal); // Criação da matriz
     for (int i = 0; i < alturaTotal; i++)
     {
         codBarra[i] = malloc(sizeof(int) * larguraTotal);
     }
 
     for (int i = 0; i < alturaTotal; i++)
-    { // preenche tudo com 0
+    { // Preenche tudo com 0
         for (int j = 0; j < larguraTotal; j++)
         {
             codBarra[i][j] = 0;
@@ -156,19 +156,6 @@ int main(int argc, char *argv[])
         contador = 0;
     }
 
-    /*     //IMPRESSÃO DA MATRIZ PARA CASO NECESSÁRIO
-    printf("\n");
-
-    for (int i = 0; i < alturaTotal; i++)
-    {
-        for (int j = 0; j < larguraTotal; j++)
-        {
-            printf("%d", codBarra[i][j]);
-        }
-        printf("\n");
-    }
-    */
-    
     // Verifica se o arquivo já existe
     int respostaSobrescrita = verificarSobrescrever(arquivo);
 
@@ -185,6 +172,16 @@ int main(int argc, char *argv[])
             }
             fprintf(arquivoGerado, "\n");
         }
+
+        // Liberação adequada de memória
+
+        for (int i = 0; i < alturaTotal; i++)
+        {
+            free(codBarra[i]);
+        }
+        free(codBarra);
+
+        //Fecha o arquivo
         fclose(arquivoGerado);
     }
     else
