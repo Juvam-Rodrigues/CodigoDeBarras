@@ -1,24 +1,43 @@
-<h1>Do que se trata o projeto? 🤔</h1>
+<h2>Do que se trata o projeto? 🤔</h1>
 
-Este projeto consiste na implementação de um gerador e leitor de código de barras no formato <strong>EAN-8</strong>, na linguagem C. Ele é capaz de:
-- Gerar a imagem PBM do código de barras com base em um identificador fornecido, verificando possíveis erros.
-- Validar a integridade de um identificador utilizando o cálculo do dígito verificador.
-- Decodificar um código de barras para verificar suas informações.
+Este projeto consiste em um trabalho desenvolvido para a disciplina Introdução às Técnicas de Programação, no qual o objetivo é criar um programa capaz de processar, analisar e exibir informações a partir dos dados obtidos de um código de barra (<strong>EAN-8</strong>). Ele é capaz de:
+<ul>
+    <li>Gerar a imagem PBM do código de barras com base em um identificador fornecido, verificando possíveis erros.
+    </li>
+    <li>Validar a integridade de um identificador utilizando o cálculo do dígito verificador.
+    </li>
+    <li>Decodificar um código de barras para verificar suas informações.
+    </li>
+    
+</ul>
 
-<h1>Estrutura de pastas: 📂</h1>
+<h2>Estrutura de pastas: 📂</h1>
    <ul>
         <li>include
             <ul>
-                <li>Subtópico 1.1</li>
-                <li>Subtópico 1.2</li>
-                <li>Subtópico 1.3</li>
+                <li>arquivo.h</li>
+                <li>codigo.h</li>
+                <li>tabela.h</li>
             </ul>
         </li>
-        <li>Tópico Principal 2
+        <li>src
             <ul>
-                <li>Subtópico 2.1</li>
-                <li>Subtópico 2.2</li>
+                <li>codigo.c</li>
+                <li>geradorCodigo.c</li>
+                <li>leitorCodigo.c</li>
+                <li>tabela.c</li>
             </ul>
         </li>
-        <li>Tópico Principal 3</li>
+        <li>readme
+            <ul>
+                <li>readme.md</li>
+            </ul>
+        </li>
     </ul>
+
+<h2>Colaboradores: 🤝</h2>
+Este projeto possui por colaboradores (principais desenvolvedores):
+<ul>
+    <li>Juvam Rodrigues do Nascimento Neto</li>
+    <li>Vinicius de Freitas Cavalcante Moreira</li>
+</ul>
