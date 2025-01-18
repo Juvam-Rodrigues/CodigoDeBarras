@@ -54,12 +54,12 @@ Para utilizar este projeto, temos dois arquivos com o método main: <strong>gera
     </ul>
 <strong>Observação: caso for utilizar os argumentos opcionais, coloque 0 no lugar destes, pois esses valores viram com valor padrão.
 
+<h2>Vídeo explicando funcionamento: 🎥</h2>
+[Assista no YouTube (versão básica)]: <a href = "https://youtu.be/ZCdGkT1LOP4?si=yv1KEiFw62hTBydA">https://youtu.be/ZCdGkT1LOP4?si=yv1KEiFw62hTBydA</a>
+
 <h2>Colaboradores: 🤝</h2>
 Este projeto possui por colaboradores (principais desenvolvedores):
 <ul>
     <li>Juvam Rodrigues do Nascimento Neto</li>
     <li>Vinicius de Freitas Cavalcante Moreira</li>
 </ul>
-
-<h2>Vídeo explicando funcionamento: 🎥</h2>
-[Assista no YouTube (versão básica)]: <a href = "https://youtu.be/ZCdGkT1LOP4?si=yv1KEiFw62hTBydA">https://youtu.be/ZCdGkT1LOP4?si=yv1KEiFw62hTBydA</a>
