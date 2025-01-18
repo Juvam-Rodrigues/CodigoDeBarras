@@ -61,5 +61,5 @@ Este projeto possui por colaboradores (principais desenvolvedores):
     <li>Vinicius de Freitas Cavalcante Moreira</li>
 </ul>
 
-<h2>Vídeo explicando funcionamento (básico): 🎥</h2>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ZCdGkT1LOP4?si=7e3t0LS5_Th-CtGD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<h2>Vídeo explicando funcionamento: 🎥</h2>
+[Assista no YouTube (versão básica)](https://youtu.be/ZCdGkT1LOP4?si=yv1KEiFw62hTBydA)
