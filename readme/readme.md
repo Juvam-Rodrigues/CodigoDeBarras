@@ -62,4 +62,4 @@ Este projeto possui por colaboradores (principais desenvolvedores):
 </ul>
 
 <h2>Vídeo explicando funcionamento: 🎥</h2>
-[Assista no YouTube (versão básica)](https://youtu.be/ZCdGkT1LOP4?si=yv1KEiFw62hTBydA)
+[Assista no YouTube (versão básica)]: <a href = "https://youtu.be/ZCdGkT1LOP4?si=yv1KEiFw62hTBydA">https://youtu.be/ZCdGkT1LOP4?si=yv1KEiFw62hTBydA</a>
